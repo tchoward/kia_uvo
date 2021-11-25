@@ -7,7 +7,7 @@ from enum import Enum
 from homeassistant.const import LENGTH_KILOMETERS, LENGTH_MILES
 
 # Configuration Constants
-DOMAIN: str = "kia_uvo"
+DOMAIN: str = "kia_uvo_2"
 CONF_PIN: str = "pin"
 CONF_STORED_CREDENTIALS: str = "stored_credentials"
 CONF_SCAN_INTERVAL: str = "scan_interval"
