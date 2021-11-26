@@ -182,7 +182,7 @@ class KiaUvoAPIUSA(KiaUvoApiImpl):
         response = requests.get(url, headers=headers)
         _LOGGER.debug(f"{DOMAIN} - Get Vehicles Response {response.text}")
         response = response.json()
-        vehicle_summary = response["payload"]["vehicleSummary"][0]
+        vehicle_summary = response["payload"]["vehicleSummary"][1]
         vehicle_name = vehicle_summary["nickName"]
         vehicle_id = vehicle_summary["vehicleIdentifier"]
         vehicle_vin = vehicle_summary["vin"]
@@ -238,20 +238,20 @@ class KiaUvoAPIUSA(KiaUvoApiImpl):
         )
 
         response_body = response.json()
-        vehicle_status = response_body["payload"]["vehicleInfoList"][0][
+        vehicle_status = response_body["payload"]["vehicleInfoList"][1][
             "lastVehicleInfo"
         ]["vehicleStatusRpt"]["vehicleStatus"]
         vehicle_data = {
             "vehicleStatus": vehicle_status,
             "odometer": {
                 "value": float(
-                    response_body["payload"]["vehicleInfoList"][0]["vehicleConfig"][
+                    response_body["payload"]["vehicleInfoList"][1]["vehicleConfig"][
                         "vehicleDetail"
                     ]["vehicle"]["mileage"]
                 ),
                 "unit": 3,
             },
-            "vehicleLocation": response_body["payload"]["vehicleInfoList"][0][
+            "vehicleLocation": response_body["payload"]["vehicleInfoList"][1][
                 "lastVehicleInfo"
             ]["location"],
         }
